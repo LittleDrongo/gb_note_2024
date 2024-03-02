@@ -30,12 +30,6 @@ class NotesApp:
             print("Заметка успешно отредактирована.")
         else:
             print("Недопустимый индекс заметки.")
-    
-    def print_note(self):
-        print(f"{self.created_at}, {self.last_modified}")
-        print(f"{self.title}")
-        print("-" * 45)
-        print(self.body)
 
     def delete_note(self, index):
         if 0 <= index < len(self.notes):
@@ -56,7 +50,7 @@ class NotesApp:
             print("\nВыберите действие:")
             print("1. Показать все заметки")
             print("2. Добавить новую заметку")
-            print("3. Показать заметку")
+            print("3. Распечатать заметку")
             print("4. Редактировать заметку")
             print("5. Удалить заметку")
             print("0. Выход")
@@ -69,8 +63,13 @@ class NotesApp:
                 body = input("Введите текст заметки: ")
                 note.add_note(title, body)
             elif choice == "3":
-                title = input("Введите номер заметки для печати: ")
-                note.print_note(note)
+                print()
+                index = int(input("Введите номер заметки для печати: "))
+                if 0 <= index < len(note.notes):
+                    note.notes[index].print_note()
+                    skip = input("Нажмите Enter чтобы продолжить")
+                else:
+                    print("Заметки с указанным индексом не существует. Пожалуйста, выберите другой индекс.")
             elif choice == "4":
                 index = int(input("Введите номер заметки для редактирования: "))
                 title = input("Введите новый заголовок заметки: ")

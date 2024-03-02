@@ -23,3 +23,10 @@ class Note:
         self.title = title
         self.body = body
         self.last_modified = datetime.datetime.now()
+
+    def print_note(self):
+        print("-" * 45)
+        print(f"{self.created_at.date()}, {self.last_modified.date()}")
+        print(f"{self.title}")
+        print(self.body)
+        print("-" * 45)
