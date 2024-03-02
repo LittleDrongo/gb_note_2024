@@ -1,28 +1,25 @@
-import os
-import json
 import datetime
 
-
 class Note:
-    def __init__(note, title, body):
-        note.title = title
-        note.body = body
-        note.created_at = datetime.datetime.now()
-        note.last_modified = note.created_at
+    def __init__(self, title, body):
+        self.title = title
+        self.body = body
+        self.created_at = datetime.datetime.now()
+        self.last_modified = self.created_at
 
-        def serialize(note):
-            return {
-                "title": note.title,
-                "created_at": note.created_at_strftime("%Y-%m-%d %H:%M:%S"),
-                "body": note.body,
-                "last_modified": note.last_modified.strftime("%Y-%m-%d %H:%M:%S")
-            }
-        
-        @classmethod
-        def deserialize(cls, data):
-            return cls(data["title"], data["body"])
-        
-        def update(note, title, body):
-            note.title = title
-            note.body = body
-            note.last_modifed = datetime.datetime.now()
+    def serialize(self):
+        return {
+            "title": self.title,
+            "created_at": self.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+            "body": self.body,
+            "last_modified": self.last_modified.strftime("%Y-%m-%d %H:%M:%S")
+        }
+
+    @classmethod
+    def deserialize(cls, data):
+        return cls(data["title"], data["body"])
+
+    def update(self, title, body):
+        self.title = title
+        self.body = body
+        self.last_modified = datetime.datetime.now()
