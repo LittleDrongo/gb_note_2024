@@ -42,7 +42,8 @@ class NotesApp:
     def list_notes(self, filter_date=None):
         for i, note in enumerate(self.notes):
             if filter_date is None or note.created_at.date() == filter_date.date():
-                print(f"{i}: {note.title} - {note.created_at}")
+                print(f"{i}: {note.title} - {note.created_at.strftime('%Y-%m-%d %H:%M:%S')}")
+                # print(f"{i}: {note.title} - {note.created_at}")
 
     def run(note):
         note.load_notes()

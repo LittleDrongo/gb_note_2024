@@ -26,7 +26,7 @@ class Note:
 
     def print_note(self):
         print("-" * 45)
-        print(f"{self.created_at.date()}, {self.last_modified.date()}")
-        print(f"{self.title}")
+        print(f"Создан: {self.created_at.strftime('%Y-%m-%d %H:%M:%S')}, Изменен: {self.last_modified.strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"Заголовок: {self.title}")
         print(self.body)
         print("-" * 45)
